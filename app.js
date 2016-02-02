@@ -1,12 +1,16 @@
 var express = require('express');
+session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var home = require('./routes/home');
 var calls = require('./routes/calls');
+var dashboard = require('./routes/dashboard');
+var tickets = require('./routes/tickets');
 
 var app = express();
 
@@ -20,10 +24,28 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+    secret: 'secret',
+    name: 'browser-calls',
+    cookie: { maxAge: 60000 },
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
-app.use('/', routes);
-app.use('/call', calls);
+// middleware for flash message handling
+app.use(function(req, res, next){
+    res.locals.success = req.flash('success');
+    res.locals.errors = req.flash('errors');
+    next();
+});
+
+app.use('/', home);
+app.use('/home', home);
+app.use('/calls', calls);
+app.use('/dashboard', dashboard);
+app.use('/tickets', tickets);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
