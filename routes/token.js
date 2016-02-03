@@ -1,19 +1,21 @@
 var express = require('express');
 var router = express.Router();
-var Ticket = require('../models/ticket');
+var twilio = require('twilio');
 
+// GET /token/generate
+router.post('/generate', function (req, res) {
+  var page = req.body.page;
+  console.log(process.env);
 
-// GET /token/new
-router.get('/new', function (req, res) {
   var capability = new twilio.Capability(
       process.env.TWILIO_ACCOUNT_SID,
       process.env.TWILIO_AUTH_TOKEN
   );
+  capability.allowClientOutgoing(process.env.TWILIO_APP_SID);
 
-  Ticket.find()
-    .then(function (tickets) {
-      res.render('dashboard/index', { tickets });
-    });
+  var token = capability.generate(page === "/dashboard"? "support_agent" : "customer");
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ token: token }));
 });
 
 module.exports = router;
