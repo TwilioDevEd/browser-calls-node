@@ -5,6 +5,7 @@ var twilio = require('twilio');
 // POST /calls/connect
 router.post('/connect', twilio.webhook({validate: false}), function(req, res, next) {
   var phoneNumber = req.body.phoneNumber;
+  var callerId = process.env.TWILIO_PHONE_NUMBER;
   var twiml = new twilio.TwimlResponse();
 
   var numberDialer = function(dial) {
@@ -16,9 +17,9 @@ router.post('/connect', twilio.webhook({validate: false}), function(req, res, ne
   };
 
   if (phoneNumber != null) {
-    twiml.dial({}, numberDialer);
+    twiml.dial({callerId : callerId}, numberDialer);
   }else {
-    twiml.dial({}, clientDialer);
+    twiml.dial({callerId : callerId}, clientDialer);
   }
 
   res.send(twiml);

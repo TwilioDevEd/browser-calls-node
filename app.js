@@ -8,7 +8,7 @@ var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 
 var home = require('./routes/home');
-var calls = require('./routes/calls');
+var call = require('./routes/call');
 var dashboard = require('./routes/dashboard');
 var tickets = require('./routes/tickets');
 var token = require('./routes/token');
@@ -44,7 +44,7 @@ app.use(function(req, res, next){
 
 app.use('/', home);
 app.use('/home', home);
-app.use('/calls', calls);
+app.use('/call', call);
 app.use('/dashboard', dashboard);
 app.use('/tickets', tickets);
 app.use('/token', token);
