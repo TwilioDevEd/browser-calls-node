@@ -1,10 +1,31 @@
 {
   "name": "browser-calls-node",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "export NODE_ENV=test && mocha test"
   },
+  "description": "A sample application which shows you how to make and receive
+                  phone calls with a browser and Twilio Client",
+  "author": {
+    "name": "Omar Ahmed",
+    "email": "neb.trx@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TwilioDevEd/browser-calls-node"
+  },
+  "keywords": [
+    "node",
+    "browser",
+    "call",
+    "twilio",
+    "express",
+    "twiml",
+    "webhooks"
+  ],
   "dependencies": {
     "bluebird": "^3.2.1",
     "body-parser": "~1.13.2",

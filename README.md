@@ -67,7 +67,7 @@ That's it
 You can run the tests locally by typing
 
 ```
-npm test
+mocha test
 ```
 
 ## Meta
