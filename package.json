@@ -6,8 +6,7 @@
     "start": "node ./bin/www",
     "test": "export NODE_ENV=test && mocha test"
   },
-  "description": "A sample application which shows you how to make and receive
-                  phone calls with a browser and Twilio Client",
+  "description": "A sample application which shows you how to make and receive phone calls with a browser and Twilio Client",
   "author": {
     "name": "Omar Ahmed",
     "email": "neb.trx@gmail.com"
@@ -19,8 +18,7 @@
   },
   "keywords": [
     "node",
-    "browser",
-    "call",
+    "browser call",
     "twilio",
     "express",
     "twiml",
