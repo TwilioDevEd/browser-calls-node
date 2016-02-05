@@ -2,12 +2,6 @@ var express = require('express');
 var router = express.Router();
 var Ticket = require('../models/ticket');
 
-
-// GET /tickets/new
-router.get('/new', function (req, res) {
-  res.render('tickets/new', { ticket: new Ticket() });
-});
-
 // POST /tickets/new
 router.post('/new', function (req, res) {
   var name = req.body.name;
