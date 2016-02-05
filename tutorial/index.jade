@@ -1,0 +1,331 @@
+.chapter(data-title='Browser Calls with Twilio and Node.js | Express')
+  .step(data-file='app.js')
+    :markdown
+      ## What does this thing do?
+
+      This Node.js [Express](//expressjs.com/en/index.html) web application shows how you can use
+      [Twilio Client](//www.twilio.com/client) to make browser-to-phone and
+      browser-to-browser calls.
+
+      ![Browser Calls home
+      page](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-home.png)
+
+      This application powers the support site for the Birchwood Bicycle Polo
+      Co., which sells equipment to those who play ["the sport of
+      kings."](//www.youtube.com/watch?v=DaK9Zj3QHDY) It has three main
+      features:
+
+      * Unsatisfied customers can submit support tickets with their phone number
+      and their problem.
+      * Support agents can call customers' phones from their browser to follow up
+      on support tickets.
+      * Customers can also use their browser to speak with support agents live
+      when available.
+
+      In this tutorial, we'll point out the key bits of code that make this
+      application work.
+      [Check out the project README on
+      GitHub](//github.com/TwilioDevEd/browser-calls-node) to see how to run
+      the code yourself.
+
+      Let's get started! Click the right arrow above to advance to the next
+      code snippet.
+
+      ---
+
+      **See also:**
+
+      * [The Twilio Node Helper Library](//www.twilio.com/docs/node/install)
+      * [Twilio Client docs](//www.twilio.com/docs/client)
+      * [Getting Started with Express](//expressjs.com/en/starter/installing.html)
+  
+  .step(data-file='routes/tickets.js')
+    :markdown
+      ## Submit a support ticket
+
+      The home page of our app displays a form for customers to submit support
+      tickets. We use the
+      [Jade Template Engine](//jade-lang.com/)
+      to power the page.
+
+      The `Ticket` model itself has just a few fields.
+      
+      ```
+      var Ticket = new mongoose.Schema({
+        name:String,
+        phoneNumber: String,
+        description: String,
+        createdAt : Date
+      });
+      ```
+      
+      Note that we are using [mongoose](//mongoosejs.com/) as 
+      [MongoDB](https://www.mongodb.org/) object modeling tool 
+      for definning our models.  
+      
+      
+      ---
+
+      **See also:**
+
+      * [Install guide for MongoDB](//docs.mongodb.org/manual/installation/)
+      * [Quick start with mongoose](//mongoosejs.com/docs/index.html)
+      
+  
+  .step(data-file='views/dashboard/index.jade',
+  data-highlight='27-51', data-mode='jade')
+    :markdown
+      ## The support dashboard
+
+      When a support agent visits `/Dashboard`, they see all the support
+      tickets which have been submitted.
+
+      ![Browser Calls support dashboard](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-dashboard.png)
+
+      Each ticket also has a "Call Customer" button which invokes a JavaScript
+      function we wrote named `callCustomer()`. That function kicks off a Twilio
+      Client call to the phone number passed as its sole parameter.
+
+
+  .step(data-file='routes/token.js',
+  data-highlight='9-18')
+    :markdown
+      ## Generate a capability token
+
+      Before our users can make calls with Twilio Client in their browser, we
+      need to provide them with a capability token.
+
+      We use the [Twilio helper library](//www.npmjs.com/package/twilio) 
+      to generate and configure our capability tokens. To allow
+      our support agents to call the phone numbers on our tickets, we use the
+      `allowClientOutgoing` method.
+
+      That method requires an identifier for a
+      [TwiML Application](//www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app).
+      Twilio will send a POST request to our backend every time a user makes a
+      Twilio Client call — the TwiML Application tells Twilio which URL to send
+      that request to.
+
+      ---
+
+      **See also:**
+
+      * [Twilio Client: Capability Tokens](//www.twilio.com/docs/client/capability-tokens)
+
+
+  .step(data-file='public/js/browser-calls.js',
+  data-highlight='18-29')
+    :markdown
+      ## Set up Twilio Client
+
+      To use Twilio Client in a web browser we use the
+      [twilio.js library](//www.twilio.com/docs/client/twilio-js).
+
+      We start by retrieving a capability token from the view we defined in the
+      previous step with an AJAX request. We then enable Twilio Client
+      for this page by passing our token to `Twilio.Device.setup()`.
+
+      The `Twilio.Device.ready()` callback lets us know when the browser is
+      ready to make and receive calls.
+
+      ---
+
+      **See also:**
+
+      * [jQuery .get()](//api.jquery.com/jquery.get/)
+      * [Twilio.Device.setup()](//www.twilio.com/docs/client/device#setup)
+      * [Twilio.Device.ready()](//www.twilio.com/docs/client/device#ready)
+
+  .step(data-file='public/js/browser-calls.js',
+  data-highlight='91-97')
+    :markdown
+      ## Call a customer (browser-to-phone)
+
+      When our support agent clicks "Call Customer" on a support ticket, this
+      function initiates the call.
+
+      We use `Twilio.Device.connect()` to begin a new outgoing call. Our backend
+      will tell Twilio how to handle this call, so we include a `phoneNumber`
+      parameter that we'll use in our `Connect` route.
+
+      Let's look at that next.
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.connect()](//www.twilio.com/docs/client/device#connect)
+
+
+
+  .step(data-file='routes/call.js',
+  data-highlight='5-26')
+    :markdown
+      ## Connect the call to a phone number
+
+      Whenever one of our users makes a call, Twilio will send a POST request to
+      the URL we set on our TwiML Application - in this case,
+      `/call/connect`.
+
+      We use [TwiML](//www.twilio.com/docs/api/twiml) to respond to the
+      request and tell Twilio how to handle the call. Twilio will pass along the
+      `phoneNumber` parameter from the previous step in its request, which
+      we will then [Dial](//www.twilio.com/docs/api/twiml/dial) in our TwiML.
+
+      ---
+
+      **See also:**
+
+      * [<Number> TwiML verb](//www.twilio.com/docs/api/twiml/number)
+      * [Using the Twilio.TwiML Helper
+      Library](//www.twilio.com/blog/2012/02/twilio-for-net-developers-part-4-using-the-twilio-twiml-helper-library.html)
+
+  .step(data-file='public/js/browser-calls.js',
+  data-highlight='47-63')
+      :markdown
+        ## The call is live
+
+        After our `Connect` route responds, Twilio completes the connection between
+        our support agent's browser and the customer's phone.
+
+        We use the `Twilio.Device.connect()` callback to update some UI elements
+        and make it clear our user is in a call. This function receives a
+        [Connection](//www.twilio.com/docs/client/connection) object,
+        which offers some additional details about the call.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.connect() callback](//www.twilio.com/docs/client/device#connect-handler)
+        * [jQuery .prop()](//api.jquery.com/prop/)
+    
+  .step(data-file='public/js/browser-calls.js',
+  data-highlight='99-105')
+      :markdown
+        ## Call a support agent (browser-to-browser)
+
+        Support tickets are useful, but sometimes a customer needs help right now.
+        With just a little more work we let customers speak with a support agent
+        live via a browser-to-browser call.
+
+        ![Browser Calls call support](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-call-support.png)
+
+        When a customer clicks "Call support" on the home page we again use
+        `Twilio.Device.connect()` to initiate the call. This time we don't pass
+        any additional parameters — our backend will route this call to our
+        support agent.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.connect()](//www.twilio.com/docs/client/device#connect)
+
+  .step(data-file='routes/call.js',
+  data-highlight='15-19, 21-23')
+      :markdown
+        ## Connect the call to the support agent's client
+
+        To allow our support agents to accept incoming calls we use the
+        `allowClientIncoming` method when generating their capability token,
+        passing `support_agent` as the client's name:
+
+        ```
+        capability.allowClientIncoming(page == "/dashboard"
+                                                  ? "support_agent" 
+                                                  : "customer");
+        ```
+
+        When Twilio sends a POST request to our `/call/connect` URL, we can
+        connect the call to our support agent by responding with a
+        [Client](//www.twilio.com/docs/api/twiml/client) TwiML noun and
+        the `support_agent` name.
+
+        ---
+
+        **See also:**
+
+        * [Allow Incoming Connections on Capability Tokens](//www.twilio.com/docs/client/capability-tokens#allow-incoming-connections)
+
+
+  .step(data-file='public/js/browser-calls.js', data-highlight='75-89')
+      :markdown
+        ## Answer the call
+
+        When our support agent's client receives an incoming call, it will trigger
+        the function we defined on the `Twilio.Device.incoming()` callback.
+
+        The incoming `connection` will be in a "pending" state until we invoke its
+        `.accept()` method, which we do in a function bound to the "Answer
+        call" button.
+
+        We also set a `.accept()` callback to update the UI once the call is live.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.incoming()](//www.twilio.com/docs/client/device#incoming)
+        * [Twilio.Device.accept()](//www.twilio.com/docs/client/connection#accept)
+        * [jQuery .click()](//api.jquery.com/click/)
+
+  .step(data-file='public/js/browser-calls.js', data-highlight='107-110, 65-73')
+      :markdown
+        ## End a call
+
+        To end a call we invoke `Twilio.Device.disconnectAll()`, which we wired
+        to the "Hang up" button in our UI.
+
+        We also define a callback function with `Twilio.Device.disconnect()`,
+        above, to reset some UI elements.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.disconnectAll()](//www.twilio.com/docs/client/device#disconnect-all)
+        * [Twilio.Device.disconnect()](//www.twilio.com/docs/client/device#disconnect)
+
+  .step(data-file='public/js/browser-calls.js', data-highlight='36-45')
+      :markdown
+        ## Check if a support agent is available
+
+        If a customer calls support but no support agent is online, their call
+        will go unanswered. To help avoid this frustration, we display a message
+        above the "Call support" button when no agent is available:
+
+        ![Browser Calls support unavailable](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-support-unavailable.png)
+
+        We use `Twilio.Device.presence()` to update this message when the
+        support agent's availability changes.
+
+        ---
+
+        **See also:**
+
+        * [Twilio Client .presence()](//www.twilio.com/docs/client/device#presence)
+
+    .step
+      :markdown
+        ## Where to next?
+
+        That's it! Our ASP.NET MVC application now powers browser-to-phone and
+        browser-to-browser calls using Twilio Client.
+
+        If you're a Node.js developer working with Twilio, you might also enjoy these
+        tutorials:
+
+        [**IVR: Screening & Recording**](//www.twilio.com/docs/howto/walkthrough/ivr-screening/node/express)
+
+        Save time and remove distractions by adding call screening and recording 
+        to your IVR (interactive voice response) system.
+
+        [**Call Tracking**](//www.twilio.com/docs/howto/walkthrough/call-tracking/node/express)
+
+        Assign a unique phone number to different advertisements, 
+        you can track which ones have the best call rates and get some data about the callers themselves. 
+
+        Thanks for checking out this tutorial! If you have any feedback to share
+        with us, we'd love to hear it. Tweet [@twilio](//twitter.com/twilio)
+        to let us know what you think.

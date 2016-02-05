@@ -1,0 +1,6 @@
+{
+    "title": "Browser Calls Node",
+    "repo": "TwilioDevEd/browser-calls-node",
+    "description": "Learn how to use Twilio Client to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!",
+    "heroku": false
+}
