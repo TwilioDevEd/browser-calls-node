@@ -92,8 +92,8 @@
     :markdown
       ## Generate a capability token
 
-      Before our users can make calls with Twilio Client in their browser, we
-      need to provide them with a capability token.
+      Before our agents can make calls with Twilio Client in their browser, we
+      need to provide the app with a capability token.
 
       We use the [Twilio helper library](//www.npmjs.com/package/twilio) 
       to generate and configure our capability tokens. To allow
@@ -177,8 +177,7 @@
       **See also:**
 
       * [<Number> TwiML verb](//www.twilio.com/docs/api/twiml/number)
-      * [Using the Twilio.TwiML Helper
-      Library](//www.twilio.com/blog/2012/02/twilio-for-net-developers-part-4-using-the-twilio-twiml-helper-library.html)
+      * [Generating TwiML with twimlResponse()](//twilio.github.io/twilio-node/#twimlResponse)
 
   .step(data-file='public/js/browser-calls.js',
   data-highlight='47-63')
@@ -310,7 +309,7 @@
       :markdown
         ## Where to next?
 
-        That's it! Our ASP.NET MVC application now powers browser-to-phone and
+        That's it! Our Express application now powers browser-to-phone and
         browser-to-browser calls using Twilio Client.
 
         If you're a Node.js developer working with Twilio, you might also enjoy these
