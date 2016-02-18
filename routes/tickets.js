@@ -9,7 +9,7 @@ router.post('/new', function (req, res) {
   var phoneNumber = req.body.phone_number;
   var createdAt = new Date();
 
-  var ticket = new Ticket({ name, phoneNumber, description, createdAt });
+  var ticket = new Ticket({ name: name, phoneNumber: phoneNumber, description: description, createdAt: createdAt });
   ticket.save()
     .then(function (savedTicket) {
       req.flash('success', 'Your ticket was submitted! An agent will call you soon.');

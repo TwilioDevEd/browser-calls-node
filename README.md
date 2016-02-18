@@ -10,7 +10,7 @@ Learn how to use [Twilio Client](https://www.twilio.com/client) to make browser-
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-Create a new TwiML app at https://www.twilio.com/user/account/apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
+Create a new TwiML app at https://www.twilio.com/user/account/apps/add and use its `Sid` as the `TWIML_APP_SID` environment variable wherever you run this app.
 
 ![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
 
@@ -23,7 +23,20 @@ Once you have created your TwiML app, configure your Twilio phone number to use 
 First you need to install either [Node.js](http://nodejs.org/) or [io.js](https://iojs.org/en/index.html), both of which
 should also install [npm](https://www.npmjs.com/).
 
-To run the app locally, clone this repository and `cd` into its directory. Then:
+1. This sample application stores data in a [MongoDB](https://www.mongodb.org/) database using [Mongoose](http://mongoosejs.com/). You can download and run MongoDB yourself (OS X, Linux, Windows).
+
+   On OS X, maybe the easiest way to get MongoDB running locally is to install via [Homebrew](http://brew.sh/).
+
+   ```
+   $ brew install mongodb
+   ```
+   You should then be able to run a local server with:
+
+   ```
+   $ mongod
+   ```
+
+To run the app locally, clone this repository and `cd` into its directory:
 
 1. First clone this repository and `cd` into its directory:
    ```
@@ -32,13 +45,21 @@ To run the app locally, clone this repository and `cd` into its directory. Then:
    cd browser-calls-node
    ```
 
-1. Install project's dependencies:
+1. Install dependencies:
 
     ```
     npm install
     ```
 
-1. Start the development server
+4. Edit the sample configuration file `.env` to match your configuration.
+
+   Once you have edited the `.env` file, if you are using a UNIX operating system, just use the source command to load the variables into your environment:
+
+  ```
+  $ source .env
+  ```
+
+1. Run the application.
 
     ```
     node .
@@ -51,14 +72,21 @@ To run the app locally, clone this repository and `cd` into its directory. Then:
     nodemon .
     ```
 
-1. Expose the application to the wider Internet using [ngrok](https://ngrok.com/)
+1. Run the application.
 
-    ```
-    ngrok http 3000 -host-header="localhost:3000"
-    ```
+  ```
+  $ npm start
+  ```
 
-1. Provision a number under the [Twilio's Manage Numbers](https://www.twilio.com/user/account/phone-numbers/incoming)
-page on your account. Set the voice URL for the number to http://[your-ngrok-subdomain].ngrok.io/ivr/welcome
+To actually forward incoming calls, your development server will need to be publicly accessible. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
+
+Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
+
+```
+http://88b37ada.ngrok.io/support/call
+```
+
+1. Check it out at [http://localhost:3000](http://localhost:3000)
 
 That's it
 
