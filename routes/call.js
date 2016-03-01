@@ -22,7 +22,7 @@ router.post('/connect', twilio.webhook({validate: false}), function(req, res, ne
     twiml.dial({callerId : callerId}, clientDialer);
   }
 
-  res.send(twiml);
+  res.send(twiml.toString());
 });
 
 module.exports = router;
