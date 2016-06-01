@@ -83,7 +83,7 @@ To actually forward incoming calls, your development server will need to be publ
 Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
 
 ```
-http://88b37ada.ngrok.io/support/call
+http://88b37ada.ngrok.io/call/connect
 ```
 
 1. Check it out at [http://localhost:3000](http://localhost:3000)
