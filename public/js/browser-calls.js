@@ -33,17 +33,6 @@ Twilio.Device.error(function (error) {
   updateCallStatus("ERROR: " + error.message);
 });
 
-/* Callback to determine if "support_agent" is available or not */
-Twilio.Device.presence(function(presenceEvent) {
-  if (presenceEvent.from === 'support_agent') {
-    if (presenceEvent.available) {
-      $("#support-unavailable").hide();
-    } else {
-      $("#support-unavailable").show();
-    }
-  }
-});
-
 /* Callback for when Twilio Client initiates a new connection */
 Twilio.Device.connect(function (connection) {
   // Enable the hang up button and disable the call buttons
