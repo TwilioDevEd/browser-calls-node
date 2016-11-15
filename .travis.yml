@@ -10,3 +10,4 @@ env:
     - export TWILIO_AUTH_TOKEN=Your-Twilio-Authy-Token
     - export TWILIO_APP_SID=Your-Twilio-APP-SID
     - export TWILIO_PHONE_NUMBER=Your-Twilio-Phone-Number
+    - export MONGO_URL=mongodb://localhost:27017/test
