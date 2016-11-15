@@ -23,14 +23,6 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
  * Normalize a port into a number, string, or false.
  */
 
@@ -91,4 +83,11 @@ function onListening() {
 }
 
 mongoose.connect('mongodb://localhost/browser-calls');
-mongoose.Promise = require('bluebird');
+mongoose.Promise = Promise;
+
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port, onListening);
+server.on('error', onError);
