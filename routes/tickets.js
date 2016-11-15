@@ -9,17 +9,18 @@ router.post('/new', function (req, res) {
   var phoneNumber = req.body.phone_number;
   var createdAt = new Date();
 
-  var ticket = new Ticket({ name: name, phoneNumber: phoneNumber, description: description, createdAt: createdAt });
-  ticket.save()
+  Ticket.create({ name: name, phoneNumber: phoneNumber, description: description, createdAt: createdAt })
     .then(function (savedTicket) {
       req.flash('success', 'Your ticket was submitted! An agent will call you soon.');
+      res.redirect(201, '/home');
     })
     .catch(function (err) {
       req.flash('errors', 'Failed to create new ticket');
-    }).
-    finally(function(){
-      res.redirect('/home');
-    });
+    })
+    // .finally(function(){
+    //   // console.log('$$ try to redirect...')
+    //   // res.redirect('/home');
+    // });
 
 });
 

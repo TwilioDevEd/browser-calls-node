@@ -5,9 +5,9 @@ var expect = require('chai').expect
 
 describe('tickets', function () {
   describe('POST to /tickets/new', function () {
-    it('creates a new ticket', function (done) {
+    it('creates a new ticket', function () {
       var agent = supertest(app);
-      agent
+      return agent
         .post('/tickets/new')
         .send({
           name: 'Ticket',
@@ -16,16 +16,11 @@ describe('tickets', function () {
         })
         .expect(201)
         .expect(function(res) {
-          Ticket.find({}, function (err, tikets) {
-            expect(tikets.length).to.equal(1);
-          });
-        })
-        .end(function(err, res) {
-          if (err) {
-            throw err;
-          }
+          return Ticket.find({})
+            .then(() => {
+              expect(tikets.length).to.equal(1);
+            });
         });
-      done();
     });
   });
 });
