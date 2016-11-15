@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "export NODE_ENV=test && mocha test"
+    "start": "DEBUG=test-app* node ./bin/www",
+    "test": "NODE_ENV=test mocha test"
   },
   "description": "A sample application which shows you how to make and receive phone calls with a browser and Twilio Client",
   "author": {
