@@ -5,8 +5,8 @@ install:
 - npm install
 services: mongodb
 env:
-  - CXX=g++-4.8
   global:
+    - export CXX=g++-4.8
     - export TWILIO_ACCOUNT_SID=Your-Account-SID
     - export TWILIO_AUTH_TOKEN=Your-Twilio-Authy-Token
     - export TWILIO_APP_SID=Your-Twilio-APP-SID
@@ -16,5 +16,5 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-      packages:
-        - g++-4.8
+    packages:
+      - g++-4.8
