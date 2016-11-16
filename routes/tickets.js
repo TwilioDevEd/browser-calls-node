@@ -21,11 +21,6 @@ router.post('/new', function (req, res) {
     .catch(function (err) {
       req.flash('errors', 'Failed to create new ticket');
     })
-    // .finally(function(){
-    //   // console.log('$$ try to redirect...')
-    //   // res.redirect('/home');
-    // });
-
 });
 
 module.exports = router;

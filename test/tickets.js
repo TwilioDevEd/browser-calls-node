@@ -12,7 +12,7 @@ describe('tickets', function () {
         .send({
           name: 'Ticket',
           description: 'A simple ticket',
-          phoneNumber: '+5555555'
+          phone_number: '+5555555'
         })
         .expect(201)
         .expect(function(res) {
