@@ -17,8 +17,8 @@ describe('tickets', function () {
         .expect(201)
         .expect(function(res) {
           return Ticket.find({})
-            .then(() => {
-              expect(tikets.length).to.equal(1);
+            .then((tickets) => {
+              expect(tickets.length).to.equal(1);
             });
         });
     });
