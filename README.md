@@ -82,8 +82,14 @@ Once you have started ngrok, update your TwiML app's voice URL setting to use yo
 ```
 http://88b37ada.ngrok.io/call/connect
 ```
+### Try it out
+1. To create a support ticket go to:
 
-1. Check it out at [http://localhost:3000](http://localhost:3000)
+  [http://localhost:3000](http://localhost:3000)
+
+1. To respond to support tickets (should open two windows or tabs).˚
+
+  [http://localhost:3000/dashboard](http://localhost:3000/dashboard)
 
 ## Run the tests
 
