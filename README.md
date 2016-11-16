@@ -2,14 +2,13 @@
   <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
 </a>
 
-# Browser Calls. Powered by Twilio - Node.js/Express
+# Browser Calls
 
 [![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-node.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-node)
 
 Twilio Client allows your users to make and receive phone calls in their browsers. This tutorial will show you the front-end and backend code necessary to make browser-to-phone and browser-to-browser calls with Twilio Client.
 
 [See step-by-step tutorial.](https://www.twilio.com/docs/tutorials/walkthrough/browser-calls/node/express)
-## Quickstart
 
 ### Create a TwiML App
 
@@ -26,38 +25,33 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
 ## Local development
 
 First you need to install
-  1. [Node.js](http://nodejs.org/) which should also install [npm](https://www.npmjs.com/).
-  1. [MongoDB](https://www.mongodb.org/)
-
-To run the app locally, clone this repository and `cd` into its directory:
+  - [Node.js](http://nodejs.org/) which should also install [npm](https://www.npmjs.com/).
+  - [MongoDB](https://www.mongodb.org/)
 
 1. First clone this repository and `cd` into its directory:
-   ```
-   git clone git@github.com:TwilioDevEd/browser-calls-node.git
+    ```
+    git clone git@github.com:TwilioDevEd/browser-calls-node.git
 
-   cd browser-calls-node
-   ```
+    cd browser-calls-node
+    ```
 
 1. Install dependencies:
-
     ```
     npm install
     ```
 
 1. Copy the sample configuration file and edit it to match your configuration
+    ```bash
+    $ cp .env .env.local
+    ```
+    You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
+    [Twilio Account Settings](https://www.twilio.com/console).
+    You will also need a `TWILIO_PHONE_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming).
 
-   ```bash
-   $ cp .env .env.local
-   ```
-   You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
-   [Twilio Account Settings](https://www.twilio.com/console).
-   You will also need a `TWILIO_PHONE_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming).
-
-   Run `source .env.local` to export the environment variables
+    Run `source .env.local` to export the environment variables
 
 
 1. Run the application.
-
     ```
     node ./bin/www
     ```
@@ -70,26 +64,26 @@ To run the app locally, clone this repository and `cd` into its directory:
     ```
 
 1. Run the application.
+    ```
+    $ npm start
+    ```
 
-  ```
-  $ npm start
-  ```
+1. To actually forward incoming calls, your development server will need to be publicly accessible. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
 
-To actually forward incoming calls, your development server will need to be publicly accessible. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
+1. Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
 
-Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
+    ```
+    http://88b37ada.ngrok.io/call/connect
+    ```
 
-```
-http://88b37ada.ngrok.io/call/connect
-```
 ### Try it out
 1. To create a support ticket go to:
 
-  [http://localhost:3000](http://localhost:3000)
+    [http://localhost:3000](http://localhost:3000)
 
-1. To respond to support tickets (should open two windows or tabs).˚
+1. To respond to support tickets (should open two windows or tabs).
 
-  [http://localhost:3000/dashboard](http://localhost:3000/dashboard)
+    [http://localhost:3000/dashboard](http://localhost:3000/dashboard)
 
 ## Run the tests
 
