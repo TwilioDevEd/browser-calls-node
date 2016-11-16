@@ -41,7 +41,7 @@ block content
             button.btn.btn-lg.btn-danger.hangup-button(disabled="", onclick="hangUp()") Hang up
       
       .col-md-6.col-md-pull-6
-        form(action="/tickets/new",method="post")
+        form(class="new-ticket")
           .form-group
             label Name
             input.form-control(type='text', name="name", placeholder='Andry Zhukov')
@@ -51,7 +51,7 @@ block content
           .form-group
             label Description:
             textarea(rows=3).form-control(name="description", placeholder='Add some description')
-          button.btn.btn-primary.btn-lg.btn-block(type='submit') Submit ticket
+          button.btn.btn-primary.btn-lg.btn-block(type='button') Submit ticket
             
       small.pull-right
         | Header photo courtesy

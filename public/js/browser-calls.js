@@ -21,6 +21,8 @@ $(document).ready(function() {
     // Set up the Twilio Client Device with the token
     Twilio.Device.setup(data.token);
   });
+
+  initNewTicketForm();
 });
 
 /* Callback to let us know Twilio Client is ready */
@@ -96,4 +98,52 @@ function callSupport() {
 /* End a call */
 function hangUp() {
   Twilio.Device.disconnectAll();
+}
+
+function initNewTicketForm() {
+  var formEl = $(".new-ticket");
+  var buttonEl = formEl.find(".btn.btn-primary");
+
+  // button handler
+  formEl.find("[type='button']").click(function(e) {
+    // e.preventDefault()
+    $.ajax({
+        url: '/tickets/new',
+        type: 'post',
+        data: formEl.serialize()
+    })
+    .fail(function(res) {
+      showNotification("Support ticket request failed. " + res.responseText, "danger")
+    })
+    .done(function(){
+      showNotification("Support ticket was created successfully.", "success")
+      // clear form
+      formEl.find("input[type=text], textarea").val("");
+
+    });
+  });
+}
+
+function showNotification(text, style) {
+  var alertStyle = "alert-"+style;
+  var alertEl = $(".alert.ticket-support-notifications");
+
+  if (alertEl.length == 0) {
+    alertEl = $("<div class=\"alert ticket-support-notifications\"></div>");
+    $("body").before(alertEl);
+  }
+
+  alertEl.removeClass (function (index, css) {
+    return (css.match (/(^|\s)alert-\S+/g) || []).join(' ');
+  });
+
+  alertEl.addClass(alertStyle);
+  alertEl.html(text);
+
+  setTimeout(clearNotifications, 4000)
+}
+
+function clearNotifications() {
+  var alertEl = $(".alert.ticket-support-notifications");
+  alertEl.remove();
 }
