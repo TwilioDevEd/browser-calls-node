@@ -114,7 +114,7 @@
 
 
   .step(data-file='public/js/browser-calls.js',
-  data-highlight='18-29')
+  data-highlight='18-26')
     :markdown
       ## Set up Twilio Client
 
@@ -180,7 +180,7 @@
       * [Generating TwiML with twimlResponse()](//twilio.github.io/twilio-node/#twimlResponse)
 
   .step(data-file='public/js/browser-calls.js',
-  data-highlight='47-63')
+  data-highlight='38-54')
       :markdown
         ## The call is live
 
@@ -200,7 +200,7 @@
         * [jQuery .prop()](//api.jquery.com/prop/)
     
   .step(data-file='public/js/browser-calls.js',
-  data-highlight='99-105')
+  data-highlight='82-88')
       :markdown
         ## Call a support agent (browser-to-browser)
 
@@ -248,7 +248,7 @@
         * [Allow Incoming Connections on Capability Tokens](//www.twilio.com/docs/client/capability-tokens#allow-incoming-connections)
 
 
-  .step(data-file='public/js/browser-calls.js', data-highlight='75-89')
+  .step(data-file='public/js/browser-calls.js', data-highlight='66-80')
       :markdown
         ## Answer the call
 
@@ -269,7 +269,7 @@
         * [Twilio.Device.accept()](//www.twilio.com/docs/client/connection#accept)
         * [jQuery .click()](//api.jquery.com/click/)
 
-  .step(data-file='public/js/browser-calls.js', data-highlight='107-110, 65-73')
+  .step(data-file='public/js/browser-calls.js', data-highlight='98-101')
       :markdown
         ## End a call
 
@@ -285,25 +285,6 @@
 
         * [Twilio.Device.disconnectAll()](//www.twilio.com/docs/client/device#disconnect-all)
         * [Twilio.Device.disconnect()](//www.twilio.com/docs/client/device#disconnect)
-
-  .step(data-file='public/js/browser-calls.js', data-highlight='36-45')
-      :markdown
-        ## Check if a support agent is available
-
-        If a customer calls support but no support agent is online, their call
-        will go unanswered. To help avoid this frustration, we display a message
-        above the "Call support" button when no agent is available:
-
-        ![Browser Calls support unavailable](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-support-unavailable.png)
-
-        We use `Twilio.Device.presence()` to update this message when the
-        support agent's availability changes.
-
-        ---
-
-        **See also:**
-
-        * [Twilio Client .presence()](//www.twilio.com/docs/client/device#presence)
 
     .step
       :markdown
