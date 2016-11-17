@@ -33,4 +33,4 @@ node_modules
 .node_repl_history
 
 # local env variables
-.env.local
+.env

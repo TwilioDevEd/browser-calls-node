@@ -42,7 +42,7 @@ First you need to install
 
 1. Copy the sample configuration file and edit it to match your configuration
     ```bash
-    $ cp .env .env.local
+    $ cp .env.example .env
     ```
     You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
     [Twilio Account Settings](https://www.twilio.com/console).
