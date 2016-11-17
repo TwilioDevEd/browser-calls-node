@@ -29,7 +29,7 @@ First you need to install
   - [MongoDB](https://www.mongodb.org/)
 
 1. First clone this repository and `cd` into its directory:
-    ```
+    ```bash
     git clone git@github.com:TwilioDevEd/browser-calls-node.git
 
     cd browser-calls-node
@@ -52,19 +52,19 @@ First you need to install
 
 
 1. Run the application.
-    ```
+    ```bash
     node ./bin/www
     ```
     Alternatively you might also consider using [nodemon](https://github.com/remy/nodemon) for this. It works just like
     the node command, but automatically restarts your application when you change any source code files.
 
-    ```
+    ```bash
     npm install -g nodemon
     nodemon ./bin/www
     ```
 
 1. Run the application.
-    ```
+    ```bash
     $ npm start
     ```
 
@@ -72,9 +72,7 @@ First you need to install
 
 1. Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
 
-    ```
-    http://88b37ada.ngrok.io/call/connect
-    ```
+    `http://88b37ada.ngrok.io/call/connect`
 
 ### Try it out
 1. To create a support ticket go to:
@@ -89,7 +87,7 @@ First you need to install
 
 You can run the tests locally by typing
 
-```
+```bash
 npm test
 ```
 
