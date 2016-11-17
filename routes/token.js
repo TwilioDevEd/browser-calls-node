@@ -6,7 +6,7 @@ var twilio = require('twilio');
 router.post('/generate', function (req, res) {
   var page = req.body.page;
 
-  var capability = twilio.jwt.Capability(
+  var capability = new twilio.jwt.Capability(
       process.env.TWILIO_ACCOUNT_SID,
       process.env.TWILIO_AUTH_TOKEN
   );
