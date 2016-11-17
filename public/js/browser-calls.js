@@ -106,20 +106,18 @@ function initNewTicketForm() {
 
   // button handler
   formEl.find("[type='button']").click(function(e) {
-    // e.preventDefault()
     $.ajax({
         url: '/tickets/new',
         type: 'post',
         data: formEl.serialize()
     })
-    .fail(function(res) {
-      showNotification("Support ticket request failed. " + res.responseText, "danger")
-    })
     .done(function(){
       showNotification("Support ticket was created successfully.", "success")
       // clear form
       formEl.find("input[type=text], textarea").val("");
-
+    })
+    .fail(function(res) {
+      showNotification("Support ticket request failed. " + res.responseText, "danger")
     });
   });
 }
