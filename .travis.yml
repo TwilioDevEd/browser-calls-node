@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - 'stable'
-- '5.0.0'
+- '4.6.2'
 services: mongodb
 env:
   global:
