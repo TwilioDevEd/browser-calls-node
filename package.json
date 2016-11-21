@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=test-app* node ./bin/www",
-    "test": "NODE_ENV=test mocha test"
+    "test": "NODE_ENV=test TWILIO_APP_SID=ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX TWILIO_ACCOUNT_SID=ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX MONGO_URL=mongodb://localhost:27017/test ./node_modules/.bin/mocha test"
   },
   "description": "A sample application which shows you how to make and receive phone calls with a browser and Twilio Client",
   "author": {
