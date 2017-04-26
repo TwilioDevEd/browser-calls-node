@@ -1,25 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
+var VoiceResponse = require('twilio/lib/twiml/VoiceResponse');
 
 // POST /calls/connect
 router.post('/connect', twilio.webhook({validate: false}), function(req, res, next) {
   var phoneNumber = req.body.phoneNumber;
   var callerId = process.env.TWILIO_PHONE_NUMBER;
-  var twiml = new twilio.TwimlResponse();
+  var twiml = new VoiceResponse();
 
-  var numberDialer = function(dial) {
-      dial.number(phoneNumber);
-  };
-
-  var clientDialer = function(dial) {
-      dial.client("support_agent");
-  };
-
+  var dial = twiml.dial({callerId : callerId});
   if (phoneNumber != null) {
-    twiml.dial({callerId : callerId}, numberDialer);
-  }else {
-    twiml.dial({callerId : callerId}, clientDialer);
+    dial.number(phoneNumber);
+  } else {
+    dial.client("support_agent");
   }
 
   res.send(twiml.toString());
