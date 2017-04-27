@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
-var VoiceResponse = require('twilio/lib/twiml/VoiceResponse');
+var VoiceResponse = twilio.twiml.VoiceResponse;
 
 // POST /calls/connect
 router.post('/connect', twilio.webhook({validate: false}), function(req, res, next) {

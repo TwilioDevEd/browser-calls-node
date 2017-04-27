@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ClientCapability = require('twilio/lib/jwt/ClientCapability');
+var ClientCapability = require('twilio').jwt.ClientCapability;
 
 // GET /token/generate
 router.post('/generate', function (req, res) {
