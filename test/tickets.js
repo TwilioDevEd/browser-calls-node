@@ -5,27 +5,22 @@ var expect = require('chai').expect
 
 describe('tickets', function () {
   describe('POST to /tickets/new', function () {
-    it('creates a new ticket', function (done) {
+    it('creates a new ticket', function () {
       var agent = supertest(app);
-      agent
+      return agent
         .post('/tickets/new')
         .send({
           name: 'Ticket',
           description: 'A simple ticket',
-          phoneNumber: '+5555555'
+          phone_number: '+5555555'
         })
         .expect(201)
         .expect(function(res) {
-          Ticket.find({}, function (err, tikets) {
-            expect(tikets.length).to.equal(1);
-          });
-        })
-        .end(function(err, res) {
-          if (err) {
-            throw err;
-          }
+          return Ticket.find({})
+            .then((tickets) => {
+              expect(tickets.length).to.equal(1);
+            });
         });
-      done();
     });
   });
 });

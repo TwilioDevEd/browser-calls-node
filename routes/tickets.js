@@ -9,18 +9,18 @@ router.post('/new', function (req, res) {
   var phoneNumber = req.body.phone_number;
   var createdAt = new Date();
 
-  var ticket = new Ticket({ name: name, phoneNumber: phoneNumber, description: description, createdAt: createdAt });
-  ticket.save()
+  if (!description || !phoneNumber || !name) {
+    return res.status(400).send('name, description and phoneNumber fields are required.')
+  }
+  Ticket.create({ name: name, phoneNumber: phoneNumber, description: description, createdAt: createdAt })
     .then(function (savedTicket) {
       req.flash('success', 'Your ticket was submitted! An agent will call you soon.');
+      return res.status(201)
+        .end();
     })
     .catch(function (err) {
       req.flash('errors', 'Failed to create new ticket');
-    }).
-    finally(function(){
-      res.redirect('/home');
-    });
-
+    })
 });
 
 module.exports = router;

@@ -31,10 +31,6 @@ block content
           .panel-heading
             h3.panel-title Talk to support now
           .panel-body
-            p#support-unavailable
-              | None of our support agents are online. (To log in as a support agent,
-              a(href="#", target="_blank") click here
-              | )
             p
               strong Status
             #call-status.well.well-sm
@@ -45,7 +41,7 @@ block content
             button.btn.btn-lg.btn-danger.hangup-button(disabled="", onclick="hangUp()") Hang up
       
       .col-md-6.col-md-pull-6
-        form(action="/tickets/new",method="post")
+        form(class="new-ticket")
           .form-group
             label Name
             input.form-control(type='text', name="name", placeholder='Andry Zhukov')
@@ -54,8 +50,8 @@ block content
             input.form-control(type='text', name="phone_number", placeholder='+16887665773')
           .form-group
             label Description:
-            textarea(rows=3).form-control(name="description", placeholder='Add some description')
-          button.btn.btn-primary.btn-lg.btn-block(type='submit') Submit ticket
+            textarea(rows=3, name="description", placeholder='Add some description').form-control
+          button.btn.btn-primary.btn-lg.btn-block(type='button') Submit ticket
             
       small.pull-right
         | Header photo courtesy

@@ -21,6 +21,8 @@ $(document).ready(function() {
     // Set up the Twilio Client Device with the token
     Twilio.Device.setup(data.token);
   });
+
+  initNewTicketForm();
 });
 
 /* Callback to let us know Twilio Client is ready */
@@ -31,17 +33,6 @@ Twilio.Device.ready(function (device) {
 /* Report any errors to the call status display */
 Twilio.Device.error(function (error) {
   updateCallStatus("ERROR: " + error.message);
-});
-
-/* Callback to determine if "support_agent" is available or not */
-Twilio.Device.presence(function(presenceEvent) {
-  if (presenceEvent.from === 'support_agent') {
-    if (presenceEvent.available) {
-      $("#support-unavailable").hide();
-    } else {
-      $("#support-unavailable").show();
-    }
-  }
 });
 
 /* Callback for when Twilio Client initiates a new connection */
@@ -107,4 +98,50 @@ function callSupport() {
 /* End a call */
 function hangUp() {
   Twilio.Device.disconnectAll();
+}
+
+function initNewTicketForm() {
+  var formEl = $(".new-ticket");
+  var buttonEl = formEl.find(".btn.btn-primary");
+
+  // button handler
+  formEl.find("[type='button']").click(function(e) {
+    $.ajax({
+        url: '/tickets/new',
+        type: 'post',
+        data: formEl.serialize()
+    })
+    .done(function(){
+      showNotification("Support ticket was created successfully.", "success")
+      // clear form
+      formEl.find("input[type=text], textarea").val("");
+    })
+    .fail(function(res) {
+      showNotification("Support ticket request failed. " + res.responseText, "danger")
+    });
+  });
+}
+
+function showNotification(text, style) {
+  var alertStyle = "alert-"+style;
+  var alertEl = $(".alert.ticket-support-notifications");
+
+  if (alertEl.length == 0) {
+    alertEl = $("<div class=\"alert ticket-support-notifications\"></div>");
+    $("body").before(alertEl);
+  }
+
+  alertEl.removeClass (function (index, css) {
+    return (css.match (/(^|\s)alert-\S+/g) || []).join(' ');
+  });
+
+  alertEl.addClass(alertStyle);
+  alertEl.html(text);
+
+  setTimeout(clearNotifications, 4000)
+}
+
+function clearNotifications() {
+  var alertEl = $(".alert.ticket-support-notifications");
+  alertEl.remove();
 }
