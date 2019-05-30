@@ -14,9 +14,9 @@ Twilio Client allows your users to make and receive phone calls in their browser
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-[Create a new TwiML app](https://www.twilio.com/console/phone-numbers/dev-tools/twiml-apps/add) and use its `Sid` as the `TWILIO_APP_SID` environment variable wherever you run this app.
+[Create a new TwiML app](https://www.twilio.com/console/phone-numbers/dev-tools/twiml-apps/add) and use its `Sid` as the `TWILIO_APP_SID` environment variable wherever you run this app. When you create the TwiML App, you can add a friendly name and leave the rest of the fields empty. We'll fill them out later on.
 
-![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
+![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif) // *This link doesn't work?*
 
 See the end of the "Local development" section for details on the exact URL to use in your TwiML app.
 
