@@ -20,7 +20,15 @@ This project is configured to use a **TwiML App**, which allows us to easily set
 
 See the end of the "Local development" section for details on the exact URL to use in your TwiML app.
 
-Once you have created your TwiML app, [configure your Twilio phone number](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app). If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/console/phone-numbers/search).  
+Once you have created your TwiML app, [configure your Twilio phone number](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app). 
+
+Configure your Twilio number... for what? For the Twiml app?
+
+Also, this link doesn't seem to be valid? https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app
+
+Was this meant to be? https://support.twilio.com/hc/en-us/articles/223135027-Configuring-Phone-Numbers-to-Receive-Voice-Calls
+
+If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/console/phone-numbers/search).  
 
 ## Local development
 
