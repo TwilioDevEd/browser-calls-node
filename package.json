@@ -42,7 +42,7 @@
     "chai": "^3.5.0",
     "cheerio": "^0.22.0",
     "connect-flash": "^0.1.1",
-    "mocha": "^3.1.2",
+    "mocha": "^7.0.0",
     "supertest": "^2.0.1"
   }
 }
