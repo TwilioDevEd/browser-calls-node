@@ -16,7 +16,7 @@ Twilio Client allows your users to make and receive phone calls in their browser
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-[Create a new TwiML app](https://www.twilio.com/user/account/apps/add) and use its `Sid` as the `TWILIO_APP_SID` environment variable wherever you run this app.
+[Create a new TwiML app](https://www.twilio.com/console/voice/twiml/apps) and use its `Sid` as the `TWILIO_APP_SID` environment variable wherever you run this app.
 
 ![Creating a TwiML App](https://support.twilio.com/hc/article_attachments/360003105393/Pic01.png)
 
@@ -32,8 +32,7 @@ First you need to install
 
 1. First clone this repository and `cd` into its directory:
     ```bash
-    git clone git@github.com:TwilioDevEd/browser-calls-node.git
-
+    git clone https://github.com/TwilioDevEd/browser-calls-node.git
     cd browser-calls-node
     ```
 
