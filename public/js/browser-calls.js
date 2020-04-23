@@ -19,7 +19,6 @@ console.log("Requesting Access Token...");
 $(document).ready(function() {
   $.post("/token/generate", {page: window.location.pathname})
     .then(function(data){
-      console.log("Token: " + data.token);
 
       // Setup Twilio.Device
       device = new Twilio.Device(data.token, {
@@ -67,7 +66,6 @@ $(document).ready(function() {
       });
 
       device.on("disconnect", function(conn) {
-        console.log("Call ended.");
         // Disable the hangup button and enable the call buttons
         hangUpButton.prop("disabled", true);
         callCustomerButtons.prop("disabled", false);
@@ -77,7 +75,6 @@ $(document).ready(function() {
       });
 
       device.on("incoming", function(conn) {
-        console.log("Incoming connection." );
         updateCallStatus("Incoming support call");
 
         // Set a callback to be executed when the connection is accepted
@@ -103,7 +100,6 @@ $(document).ready(function() {
 
 /* Call a customer from a support ticket */
 function callCustomer(phoneNumber) {
-  console.log('CALLING - NUMBER: ', phoneNumber);
   updateCallStatus("Calling " + phoneNumber + "...");
 
   var params = {"phoneNumber": phoneNumber};
