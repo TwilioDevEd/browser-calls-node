@@ -4,7 +4,7 @@
 
 # Browser Calls
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-node.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-node)
+![](https://github.com/TwilioDevEd/browser-calls-node/workflows/Node.js/badge.svg)
 
 > We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
 
@@ -49,9 +49,6 @@ First you need to install
     [Twilio Account Settings](https://www.twilio.com/console).
     You will also need a `TWILIO_PHONE_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming).
 
-    Run `source .env.local` to export the environment variables
-
-
 1. Run the application.
     ```bash
     node ./bin/www
@@ -76,11 +73,11 @@ First you need to install
     `http://88b37ada.ngrok.io/call/connect`
 
 ### Try it out
-1. To create a support ticket go to:
+1. To create a support ticket go to the `home` page. On this page you could fill some fields and create a tick or you can call to support:
 
     [http://localhost:3000](http://localhost:3000)
 
-1. To respond to support tickets (should open two windows or tabs).
+1. To respond to support tickets go to the `dashboard` page (you should open two windows or tabs). On this page you could call customers and answers phone calls.
 
     [http://localhost:3000/dashboard](http://localhost:3000/dashboard)
 
@@ -95,5 +92,6 @@ npm test
 ## Meta
 
 * No warranty expressed or implied. Software is as is. Diggity.
+* The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
 * Lovingly crafted by Twilio Developer Education.

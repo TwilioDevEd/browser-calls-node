@@ -82,7 +82,7 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-mongoose.connect('mongodb://localhost/browser-calls');
+mongoose.connect('mongodb://localhost/browser-calls', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
 

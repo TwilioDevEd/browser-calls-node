@@ -26,7 +26,7 @@ block content
                 small.pull-right !{ticket.createdAt.toLocaleString('en-US', { hour12: false })}
             .panel-body
               .pull-right
-                button.btn.btn-primary.btn-lg.call-customer-button(onclick="callCustomer('#{ticket.phoneNumber}')", type="button")
+                button.btn.btn-primary.btn-lg.call-customer-button(onclick="callCustomer('"+ticket.phoneNumber+"')", type="button")
                   span.glyphicon.glyphicon-earphone(aria-hidden="true")
                   |  Call customer
               p
