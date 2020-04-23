@@ -73,7 +73,7 @@ First you need to install
     `http://88b37ada.ngrok.io/call/connect`
 
 ### Try it out
-1. To create a support ticket go to the `home` page. On this page you could fill some fields and create a tick or you can call to support:
+1. To create a support ticket go to the `home` page. On this page you could fill some fields and create a ticket or you can call to support:
 
     [http://localhost:3000](http://localhost:3000)
 
