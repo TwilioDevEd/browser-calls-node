@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var Ticket = require('../models/ticket');
+const express = require('express');
+const router = express.Router();
+const Ticket = require('../models/ticket');
 
 // POST /tickets/new
 router.post('/new', function (req, res) {

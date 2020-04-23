@@ -1,7 +1,7 @@
-var expect = require('chai').expect
-  , supertest = require('supertest')
-  , app = require('../app.js')
-  , Ticket = require('../models/ticket');
+const expect = require('chai').expect
+const supertest = require('supertest')
+const app = require('../app.js')
+const Ticket = require('../models/ticket');
 
 describe('tickets', function () {
   describe('POST to /tickets/new', function () {

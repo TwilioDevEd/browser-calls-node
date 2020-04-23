@@ -1,21 +1,30 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
 
-mongoose.Promise = Promise;
+const mongod = new MongoMemoryServer({instance: {port: 27017, dbName:'test'}});
 
-var connStr = process.env.MONGO_URL;
-if (!connStr) {
-  throw new Error('MONGO_URL env variable is not defined.');
+module.exports.connect = async () => {
+    const uri = await mongod.getConnectionString();
+
+    const mongooseOpts = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    };
+
+    await mongoose.connect(uri, mongooseOpts);
 }
 
-var conn;
-
-if (mongoose.connections.length === 0) {
-  conn = mongoose.connect(connStr);
-} else {
-  conn = mongoose.connections[0];
-  if (!conn.host) {
-    conn = mongoose.connect(connStr);
-  }
+module.exports.closeDatabase = async () => {
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
+    await mongod.stop();
 }
 
-exports.mongoConnection = conn;
+module.exports.clearDatabase = async () => {
+    const collections = mongoose.connection.collections;
+
+    for (const key in collections) {
+        const collection = collections[key];
+        await collection.deleteMany();
+    }
+}

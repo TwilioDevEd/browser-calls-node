@@ -1,6 +1,6 @@
-var expect = require('chai').expect
-  , supertest = require('supertest')
-  , app = require('../app.js');
+const expect = require('chai').expect
+const supertest = require('supertest')
+const app = require('../app.js');
 
 describe('token', function () {
   describe('POST /token/generate', function () {
