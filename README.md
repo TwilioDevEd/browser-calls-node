@@ -41,17 +41,24 @@ First you need to install
     npm install
     ```
 
-1. Copy the sample configuration file and edit it to match your configuration
+1. Copy the sample configuration file and edit it to match your configuration, you could find the value for each variable in the next table.
     ```bash
     $ cp .env.example .env
     ```
-    You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
-    [Twilio Account Settings](https://www.twilio.com/console).
-    You will also need a `TWILIO_PHONE_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming).
+
+    | Config Value  | Description |
+    | :-------------  |:------------- |
+    `TWILIO_ACCOUNT_SID` | In [Twilio Account Settings](https://www.twilio.com/console).
+
+    `TWILIO_APP_SID` | In [TwiML apps](https://www.twilio.com/console/voice/twiml/apps).
+
+    `TWILIO_PHONE_NUMBER` | You may find [here](https://www.twilio.com/console/phone-numbers/incoming).
+
+    `TWILIA_API_KEY` / `TWILIO_API_SECRET` | You could find [here](https://www.twilio.com/console/project/api-keys).
 
 1. Run the application.
     ```bash
-    node ./bin/www
+    npm start
     ```
     Alternatively you might also consider using [nodemon](https://github.com/remy/nodemon) for this. It works just like
     the node command, but automatically restarts your application when you change any source code files.
@@ -59,11 +66,6 @@ First you need to install
     ```bash
     npm install -g nodemon
     nodemon ./bin/www
-    ```
-
-1. Run the application.
-    ```bash
-    $ npm start
     ```
 
 1. To actually forward incoming calls, your development server will need to be publicly accessible. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
