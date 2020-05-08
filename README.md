@@ -54,7 +54,7 @@ First you need to install
 
     `TWILIO_PHONE_NUMBER` | You may find [here](https://www.twilio.com/console/phone-numbers/incoming).
 
-    `TWILIA_API_KEY` / `TWILIO_API_SECRET` | You could find [here](https://www.twilio.com/console/project/api-keys).
+    `TWILIO_API_KEY` / `TWILIO_API_SECRET` | You could find [here](https://www.twilio.com/console/project/api-keys).
 
 1. Run the application.
     ```bash
