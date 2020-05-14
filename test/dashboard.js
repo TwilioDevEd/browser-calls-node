@@ -1,26 +1,25 @@
-require('./connectionHelper');
+const connectionHelper = require('./connectionHelper');
 
-var expect = require('chai').expect
-  , supertest = require('supertest')
-  , app = require('../app.js')
-  , Ticket = require('../models/ticket');
+const expect = require('chai').expect
+const supertest = require('supertest')
+const app = require('../app.js')
+const Ticket = require('../models/ticket');
 
 describe('dashboard', function () {
-  before(function (done) {
-    Ticket.create({
-      name: 'Ticket',
-      phoneNumber: '+567899043',
-      description: 'A simple ticket',
-      createdAt : new Date()
-    })
-    .then(function (ticket) {
-      done();
-    });
+  before(async () => {
+    await connectionHelper.connect();
+
+    await Ticket.create(
+      { 
+        name: 'Ticket',
+        phoneNumber: '+567899043',
+        description: 'A simple ticket',
+        createdAt : new Date()
+      }
+    );
   });
 
-  after(function (done) {
-    Ticket.remove({}, done);
-  });
+  after(async () => await connectionHelper.clearDatabase());
 
   describe('GET /dashboard', function () {
     it('list all tickets', function (done) {

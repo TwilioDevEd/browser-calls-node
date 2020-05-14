@@ -1,9 +1,9 @@
 
-var expect = require('chai').expect
-  , supertest = require('supertest')
-  , cheerio = require('cheerio');
+const expect = require('chai').expect
+const supertest = require('supertest')
+const cheerio = require('cheerio');
 
-var app = require('../app.js');
+const app = require('../app.js');
 
 describe('call', function () {
   describe('POST to /call/connect', function () {

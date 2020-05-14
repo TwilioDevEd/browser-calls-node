@@ -4,7 +4,7 @@
 
 # Browser Calls
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-node.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-node)
+![](https://github.com/TwilioDevEd/browser-calls-node/workflows/Node.js/badge.svg)
 
 > We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
 
@@ -41,20 +41,24 @@ First you need to install
     npm install
     ```
 
-1. Copy the sample configuration file and edit it to match your configuration
+1. Copy the sample configuration file and edit it to match your configuration, you could find the value for each variable in the next table.
     ```bash
     $ cp .env.example .env
     ```
-    You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
-    [Twilio Account Settings](https://www.twilio.com/console).
-    You will also need a `TWILIO_PHONE_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming).
 
-    Run `source .env.local` to export the environment variables
+    | Config Value  | Description |
+    | :-------------  |:------------- |
+    `TWILIO_ACCOUNT_SID` | In [Twilio Account Settings](https://www.twilio.com/console).
 
+    `TWILIO_APP_SID` | In [TwiML apps](https://www.twilio.com/console/voice/twiml/apps).
+
+    `TWILIO_PHONE_NUMBER` | You may find [here](https://www.twilio.com/console/phone-numbers/incoming).
+
+    `TWILIO_API_KEY` / `TWILIO_API_SECRET` | You could find [here](https://www.twilio.com/console/project/api-keys).
 
 1. Run the application.
     ```bash
-    node ./bin/www
+    npm start
     ```
     Alternatively you might also consider using [nodemon](https://github.com/remy/nodemon) for this. It works just like
     the node command, but automatically restarts your application when you change any source code files.
@@ -64,11 +68,6 @@ First you need to install
     nodemon ./bin/www
     ```
 
-1. Run the application.
-    ```bash
-    $ npm start
-    ```
-
 1. To actually forward incoming calls, your development server will need to be publicly accessible. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
 
 1. Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
@@ -76,11 +75,11 @@ First you need to install
     `http://88b37ada.ngrok.io/call/connect`
 
 ### Try it out
-1. To create a support ticket go to:
+1. To create a support ticket go to the `home` page. On this page you could fill some fields and create a ticket or you can call to support:
 
     [http://localhost:3000](http://localhost:3000)
 
-1. To respond to support tickets (should open two windows or tabs).
+1. To respond to support tickets go to the `dashboard` page (you should open two windows or tabs). On this page you could call customers and answers phone calls.
 
     [http://localhost:3000/dashboard](http://localhost:3000/dashboard)
 
@@ -95,5 +94,6 @@ npm test
 ## Meta
 
 * No warranty expressed or implied. Software is as is. Diggity.
+* The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
 * Lovingly crafted by Twilio Developer Education.
