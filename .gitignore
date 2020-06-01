@@ -34,3 +34,5 @@ node_modules
 
 # local env variables
 .env
+
+.tool-versions
