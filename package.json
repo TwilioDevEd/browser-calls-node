@@ -35,7 +35,7 @@
     "jade": "^1.11.0",
     "mongoose": "^4.6.8",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0",
+    "serve-favicon": "~2.5.0",
     "twilio": "~3.0.0-rc.16"
   },
   "devDependencies": {
