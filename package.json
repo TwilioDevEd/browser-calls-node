@@ -36,7 +36,7 @@
     "express": "~4.17.1",
     "express-session": "^1.17.1",
     "pug": "^2.0.4",
-    "mongoose": "^5.9.10",
+    "mongoose": "^5.10.12",
     "morgan": "~1.10.0",
     "serve-favicon": "~2.5.0",
     "twilio": "~3.42.2"
