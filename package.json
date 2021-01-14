@@ -46,7 +46,7 @@
     "cheerio": "^1.0.0-rc.5",
     "connect-flash": "^0.1.1",
     "mocha": "^8.2.1",
-    "mongodb-memory-server": "^6.9.2",
+    "mongodb-memory-server": "^6.9.3",
     "supertest": "^6.0.1"
   }
 }
