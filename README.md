@@ -72,12 +72,12 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
 
    See [Twilio Account Settings](#twilio-account-settings) to locate the necessary environment variables.
 
-4. Run the application.
+4. Start MongoDB.
 
-   Make sure MongoDB is running before starting the application. See how to start the MongoDB service on
+   This app requires MongoDB to be running. See how to start the MongoDB service on
    [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#start-mongodb-community-edition-as-a-windows-service), [MacOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#run-mongodb-community-edition), or [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/) (choose your Linux distribution and then see "Run MongoDB Community Edition" in the installation instructions).
 
-   Once MongoDB is running, you can start the application.
+5. Run the application.
 
    ```bash
    npm start
@@ -91,7 +91,7 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
    nodemon ./bin/www
    ```
 
-5. Expose your application to the wider internet using [ngrok](http://ngrok.com). This step
+6. Expose your application to the wider internet using [ngrok](http://ngrok.com). This step
    **is important** because the application won't work as expected if you run it through
    localhost. [Here](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html), you could read more about why we recomend you to use ngrok.
 
@@ -99,7 +99,7 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
    ngrok http 3000
    ```
 
-6. Once you have started ngrok, update your [TwiML app's](#create-a-twiml-app) Voice URL setting to use
+7. Once you have started ngrok, update your [TwiML app's](#create-a-twiml-app) Voice URL setting to use
    your ngrok hostname, so it will look something like this: 
    
    ```
@@ -108,7 +108,7 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
    
    See [Create a TwiML App](#create-a-twiml-App).
 
-7. Everything is setup, now you can open two tabs in the browser to test the application.
+8. Everything is setup, now you can open two tabs in the browser to test the application.
 
    - To create a support ticket go to the `home` page. On this page you could fill some fields and create a ticket or you can call to support:
 
