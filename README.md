@@ -25,7 +25,7 @@ Implementations in other languages:
 ### Requirements
 
 - [Nodejs](https://nodejs.org/) v10 or v12
-- [Mongo](https://docs.mongodb.com/manual/installation/)
+- [Mongo](https://docs.mongodb.com/manual/administration/install-community/)
 
 ### Twilio Account Settings
 
@@ -73,6 +73,11 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
    See [Twilio Account Settings](#twilio-account-settings) to locate the necessary environment variables.
 
 4. Run the application.
+
+   Make sure MongoDB is running before starting the application. See how to start the MongoDB service on
+   [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#start-mongodb-community-edition-as-a-windows-service), [MacOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#run-mongodb-community-edition), or [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/) (choose your Linux distribution and then see "Run MongoDB Community Edition" in the installation instructions).
+
+   Once MongoDB is running, you can start the application.
 
    ```bash
    npm start
