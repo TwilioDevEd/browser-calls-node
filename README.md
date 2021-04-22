@@ -93,7 +93,7 @@ Once you have created your TwiML app, [configure your Twilio phone number](https
 
 6. Expose your application to the wider internet using [ngrok](http://ngrok.com). This step
    **is important** because the application won't work as expected if you run it through
-   localhost. [Here](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html), you could read more about why we recomend you to use ngrok.
+   localhost. [Here](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html), you could read more about why we recommend you to use ngrok.
 
    ```bash
    ngrok http 3000
