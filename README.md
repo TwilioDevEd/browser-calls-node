@@ -2,6 +2,8 @@
   <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
 </a>
 
+## **NOTE**: This tutorial uses the outdated 1.X version of the Twilio Voice Javascript SDK (formerly called Twilio Client). [Click here](https://www.twilio.com/docs/voice/client/migrating-to-js-voice-sdk-20) for information on how to migrate to the 2.X version.
+
 # Browser Calls
 
 ![](https://github.com/TwilioDevEd/browser-calls-node/workflows/Node.js/badge.svg)
