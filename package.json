@@ -39,7 +39,7 @@
     "mongoose": "^5.12.6",
     "morgan": "~1.10.0",
     "serve-favicon": "~2.5.0",
-    "twilio": "~3.61.0"
+    "twilio": "~3.82.2"
   },
   "devDependencies": {
     "chai": "^4.3.4",
