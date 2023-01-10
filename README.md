@@ -1,26 +1,15 @@
-<a href="https://www.twilio.com">
-  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
+<a  href="https://www.twilio.com">
+<img  src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg"  alt="Twilio"  width="250"  />
 </a>
 
-## **NOTE**: This tutorial uses the outdated 1.X version of the Twilio Voice Javascript SDK (formerly called Twilio Client). [Click here](https://www.twilio.com/docs/voice/client/migrating-to-js-voice-sdk-20) for information on how to migrate to the 2.X version.
+# Browser Calls (Node)
 
-# Browser Calls
-
-![](https://github.com/TwilioDevEd/browser-calls-node/workflows/Node.js/badge.svg)
-
-> This template is part of Twilio CodeExchange. If you encounter any issues with this code, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues).
+> This repository is now archived and is no longer being maintained. 
+> Check out the [JavaScript SDK Quickstarts](https://www.twilio.com/docs/voice/sdks/javascript/get-started) to get started with browser-based calling. 
 
 ## About
 
-Twilio Client allows your users to make and receive phone calls in their browsers. This tutorial will show you the front-end and backend code necessary to make browser-to-phone and browser-to-browser calls with Twilio Client and Nodejs.
-
-[See step-by-step tutorial.](https://www.twilio.com/docs/tutorials/walkthrough/browser-calls/node/express)
-
-Implementations in other languages:
-
-| .NET | Java | Python | PHP | Ruby |
-| :--- | :--- | :----- | :-- | :--- |
-| [Done](https://github.com/TwilioDevEd/browser-calls-csharp) | [Done](https://github.com/TwilioDevEd/browser-calls-spark)  | [Done](https://github.com/TwilioDevEd/browser-calls-django)  | [Done](https://github.com/TwilioDevEd/browser-calls-laravel) | [Done](https://github.com/TwilioDevEd/browser-calls-rails)  |
+Learn how to use [Twilio's JavaScript SDK](https://www.twilio.com/docs/voice/sdks/javascript) to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!
 
 ## Set up
 
@@ -143,10 +132,6 @@ npm test
 ## Resources
 
 - The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
-
-## Contributing
-
-This template is open source and welcomes contributions. All contributions are subject to our [Code of Conduct](https://github.com/twilio-labs/.github/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
